@@ -25,4 +25,4 @@ Quality and Usability Lab</a></h5> </td>
 </tr>
 </table>
 
-# MasterThesis QU DFKI comparison in between Emformer
+# MasterThesis: comparison in between Emformer
