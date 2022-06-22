@@ -26,9 +26,9 @@ Quality and Usability Lab</a></h5> </td>
 </table>
 
 # MasterThesis: comparison in between Emformer
-## Status.
-In progress
-## Abstract.
+## Status
+In progress.
+## Abstract
 
 ## Contributors
 - Mohamed Mesto m.mesto@campus.tu-berlin.de  , Mohamedmesto111@gmail.com
