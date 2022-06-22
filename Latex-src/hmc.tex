@@ -1,0 +1,18 @@
+\section{Related work on supervised approaches} \label{hmc}
+
+In this chapter, we present the relevant literature regarding supervised approaches to \acrfull{si}. We focus on the literature regarding \acrfull{hmc}, a problem in machine learning where objects can be assigned an arbitrary number of labels, and where the labels form a hierarchy. It is a specific case of the \acrfull{mlc} problem. The models are trained by feeding them labeled data, which in our case are assignments of subjects to documents.
+
+\acrshort{hmc} has applications in various disciplines other than \acrfull{nlp}, such as in computer vision, for object recognition tasks, or in biomedicine for predicting the function of proteins. Given the popularity in research of these two disciplines, there is a lot of literature regarding \acrshort{hmc}. We start this chapter by introducing \acrshort{hmc}, including its different approaches. We then go over several neural network architectures that we deem suitable for our use case, and present the relevant literature for each of them.
+
+Binary classifiers are not suitable for our use case because our number of subjects is too high: training 2,157 independent binary classifiers would be computationally expensive. We therefore focus on approaches that comprise only one model, which is responsible for computing the assignment probabilities of all subjects. Convolutional models are well suited for our task because of their feature extraction capabilities. We have found such a model in the literature (\cite{gargiulo2019deep}) that is applied to a similar use case. It will be the basis of our implementation. This model is presented in section \ref{hmc_gargiulo}
+
+We will extend the model in two ways. First, we modify the loss function to account for the imbalance between positive and negative labels in multi-label settings \cite{ben2020asymmetric}, as explained in section \ref{hmc_asl}. The second extension is the implementation of the current \acrshort{sota} in \acrshort{hmc}, which only involves adding a layer on top of the model and again modifying the loss function. This extension ensures that the assignment probability output by the model for each subject is at least as high as the probabilities of its descendants in the hierarchy \cite{giunchiglia2020coherent}. The details of this implementation are shown in section \ref{hmc_forward}.
+
+We also present an application of recurrent networks to \acrshort{hmc}. The recurrence is applied to the levels of the subject hierarchy, which increases the efficiency of the model because of the shared weights \cite{wehrmann2018hierarchical}. However, we discard implementing them, as the authors of the recurrent network show in their experiments that it performs worse than the analogous feed-forward network where the weights are not shared across levels.
+
+\input{hmc/intro}
+\input{hmc/binary_classifiers}
+\input{hmc/convolutional_nets}
+\input{hmc/feedforward_nets}
+\input{hmc/recurrent_nets}
+\input{hmc/asl}

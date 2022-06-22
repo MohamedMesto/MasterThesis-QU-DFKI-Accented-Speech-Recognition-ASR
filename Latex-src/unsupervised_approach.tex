@@ -1,0 +1,18 @@
+\section{Unsupervised approach} \label{unsupervised_approach}
+
+Here we present our first approach. It is inspired by the \acrfull{si} procedure performed by Microsoft to create the \acrfull{mag}, as outlined in a demo paper \cite{shen2018web}. We use the subjects they have discovered, as well as the hierarchy they extracted from the assignments. Details on their implementation can be found in section \ref{subject_indexing_mag}. Our goal is not to compare our results with Microsoft's, nor to fully reproduce their approach. Rather, our intention is to implement a fully unsupervised procedure, which doesn't depend on any external sources of data. We also require our implementation to be simple.
+
+We have built a vocabulary based on the relevant documents of the repositories. At first, it contains all lemmatized tokens of the repositories. We then remove the tokens that appear in only one document, to reduce the size of the vocabulary. The details of the vocabulary construction can be found in section \ref{implementation_vocab}. We then train the embeddings of the vocabulary entries with the skip-gram model. The resulting vectors are used to vectorize documents and subjects, which are then compared in vector space regarding their similarity. In section \ref{implementation_skipgram}, we show the results of the training procedure and offer some examples.
+
+We enrich the representation of documents by adding the representations of other documents that appear under the same venue, advisor and referee in the repositories. They handle similar topics, and therefore improve the representation of each other. Subjects, on the other hand, are enriched with text from their corresponding Wikipedia articles. We finally sort the words of each representation by frequency, removing duplicates. In section \ref{unsupervised_approach_representations}, we explain thoroughly how documents, subjects and venues are represented.
+
+The representations of documents and subjects are then vectorized with the word embeddings. We compare them in vector space regarding the similarity, to find the subjects that should be assigned to each document. We have developed three methods to compute similarities, which we present in section \ref{unsupervised_approach_vectorization}, together with some examples that illustrate how they work. Adding together the word vectors of each representation seems to offer the best result. This will be properly tested in the evaluation (chapter \ref{eval}).
+
+Finally, in section \ref{unsupervised_approach_conclusion}, we analyze the procedure, looking for decisive factors and possible improvements. The implementation is tedious, as it comprises many steps and details. Its accuracy can be increased by improving the vocabulary by discarding uninformative words and adding relevant phrases. Experimenting with other ways of representing texts, such as keeping duplicates, may also be beneficial.
+
+\input{unsupervised_approach/vocab}
+\input{unsupervised_approach/embeddings}
+\input{unsupervised_approach/representations}
+\input{unsupervised_approach/vectorization}
+\input{unsupervised_approach/results}
+\input{unsupervised_approach/conclusion}

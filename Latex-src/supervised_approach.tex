@@ -1,0 +1,18 @@
+\section{Supervised approach} \label{supervised_approach}
+
+Our second approach to performing \acrshort{si} in the repositories is based on using external data to train a machine learning classifier, which will then be applied on the documents of the repositories. In machine learning, this field is called \acrfull{hmc}, as a variable number of labels may be assigned to any object, and the labels are organized in a hierarchy. The relevant literature was presented in chapter \ref{hmc}. The main challenge of the supervised approach is that the data used to train the classifier is noisy. The authors of \acrshort{mag}, whose data we are using, estimate that their subject indexing procedure has an accuracy of 80 \%.
+
+This approach is fundamentally opposite to the unsupervised approach, which uses only data present in the repositories. The word embeddings and the vocabulary used in this approach are independent of the repositories, meaning that this classifier could be used without any modifications for any repository whose documents are topically similar to the ones used to train the classifier. This is an important difference between the approaches in terms of applicability, as the unsupervised approach is tailored specifically for our dataset, including numerous data cleaning steps and exception handling that are hard to generalize for their use in different scenarios.
+
+Given that this approach should be widely applicable, we use pre-trained word embeddings. We present different in section \ref{supervised_approach_embeddings}. In the end, we use the fastText embeddings \cite{mikolov2017advances} because of their high accuracy and their similarity to the ones we trained ourselves in the unsupervised approach.
+
+We then present and analyze the data we have gathered to train the models in section \ref{supervised_approach_data}. We have retrieved 200,000 documents from OpenAlex, each with a title, an abstract and a set of assigned subjects. As we want our training data to be well distributed across our subset of \acrshort{mag} subjects, we have retrieved up to 100 documents per subject.
+
+In section \ref{supervised_approach_models}, we discuss our model architecture, which we have adopted from a similar use case \cite{gargiulo2019deep}. It includes two convolutional layers for feature extraction and two fully connected layers that compute assignment probabilities for each subject, given a document. We also implement two further extensions of the model. The first one only modifies the loss function to account for the imbalance between positive and negative samples in multi-label scenarios \cite{ben2020asymmetric}. The second one further extends the loss function by ensuring that the assignment probabilities don't violate the subject hierarchy \cite{giunchiglia2020coherent}. This enforcement is also performed by an additional layer we append to the first model.
+
+We thus have three models. They all use the same neural network architecture, excepting the coherent model, which adds another layer on top. The main difference between the models is the loss function. Finally, in section \ref{supervised_approach_conclusion}, we talk about different aspects of this approach, such as its complexity and its computational cost. In summary, this approach is easy to implement but expensive to compute, as optimizing its parameters involves extensive experimenting. We also discuss potential improvements, such as modeling the label noise or introducing the confidence scores into the model.
+
+\input{supervised_approach/embeddings}
+\input{supervised_approach/data}
+\input{supervised_approach/models}
+\input{supervised_approach/conclusion}

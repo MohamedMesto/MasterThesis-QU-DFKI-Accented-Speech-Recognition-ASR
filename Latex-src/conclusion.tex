@@ -1,0 +1,13 @@
+\section{Conclusion} \label{conclusion}
+
+In this final chapter, we compare the \acrfull{um} with \acrshort{mag}, highlighting the factors that explain the difference in performance. We also present the conclusions of this thesis regarding the comparison of \acrshort{um} and the \acrfull{sm} in light of our research question. Finally, we talk about the repositories, the literature and the applicability of our work.
+
+The unsupervised method did not perform as well as \acrshort{mag} because of several reasons: the size and quality of the data favor \acrshort{mag}, as our approaches rely on connections between documents, which in turn depend on the size and quality of the data. Also, \acrshort{mag} manually assigned subjects to venues to enrich the representation of subjects, which we believe is an important factor when evaluating the performance of the models.
+
+We then summarize the results of the evaluation procedure, where it was shown that the \acrshort{sm} is significantly more accurate than the \acrshort{um}. Thus, we state that the \acrshort{sm} is better suited for performing subject indexing on small, technical and multidisciplinary datasets. We also analyze other aspects of the methods, concluding that the \acrshort{sm} is easier to implement and has more potential, whereas the \acrshort{um} is cheaper to compute and is more interpretable. 
+
+We then end this thesis discussing the applicability of our work. The supervised model can be added to any multidisciplinary repository, given that the subjects, as well as the training data, cover 19 fields of study. Furthermore, its vocabulary is not tailored to the repositories of the experiments, which broadens its scope and allows the model to be used in repositories that handle different topics. 
+
+\input{conclusion/unsupervised}
+\input{conclusion/comparison}
+\input{conclusion/apply}

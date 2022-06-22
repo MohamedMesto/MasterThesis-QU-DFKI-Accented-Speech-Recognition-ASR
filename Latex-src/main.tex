@@ -1,0 +1,188 @@
+\documentclass{article}      % Specifies the document class
+\usepackage{graphicx}		 % Need this to include images
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage[acronym]{glossaries}
+\usepackage{ngerman}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage[toc,page]{appendix}
+
+\selectlanguage{english}
+\usepackage[utf8]{inputenc}
+
+% Add another layer to the Index
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+ 
+\lstset{style=mystyle}
+
+\makeglossaries
+ 
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{asi}{ASI}{Automatic Subject Indexing}
+\newacronym{asl}{ASL}{Asymmetric Loss}
+\newacronym{aml}{AML}{Asymmetric Max-constraint Loss}
+\newacronym{bce}{BCE}{Binary Cross Entropy}
+\newacronym{cli}{CLI}{Command-Line Interface}
+\newacronym{cbow}{CBOW}{Continuous-bag-of-words}
+\newacronym{cnn}{CNN}{Convolutional Neural Network}
+\newacronym{cpu}{CPU}{Central Processing Unit}
+\newacronym{csv}{CSV}{comma-separated values}
+\newacronym{ddc}{DDC}{Dewey Decimal Classification}
+\newacronym{ert}{ERT}{Extended Representing Text}
+\newacronym{fnn}{FNN}{Feed-forward Neural Network}
+\newacronym{fl}{FL}{Focal Loss}
+\newacronym{fu}{FU}{Free University}
+\newacronym{gb}{GB}{Gigabytes}
+\newacronym{gflops}{GFLOPS}{Giga- Floating Point Operations Per Second}
+\newacronym{hlse}{HLSE}{Hierarchical Label Set Expansion}
+\newacronym{hmc}{HMC}{Hierarchical Multi-label Classification}
+\newacronym{hu}{HU}{Humboldt University}
+\newacronym{http}{HTTP}{HyperText Transfer Protocol}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{kg}{KG}{Knowledge Graph}
+\newacronym{kge}{KGE}{Knowledge Graph Embedding}
+\newacronym{kos}{KOS}{Knowledge Organization System}
+\newacronym{lca}{LCA}{Lowest Common Ancestor}
+\newacronym{lcas}{LCAS}{Lowest Common Ancestor Score}
+\newacronym{lda}{LDA}{Latent Dirichlet Allocation}
+\newacronym{ml}{ML}{Machine Learning}
+\newacronym{mcl}{MCL}{Max-constraint Loss}
+\newacronym{mcm}{MCM}{Max-constraint Module}
+\newacronym{mag}{MAG}{Microsoft Academic Graph}
+\newacronym{makg}{MAKG}{Microsoft Academic Knowledge Graph}
+\newacronym{mb}{MB}{Megabytes}
+\newacronym{mlc}{MLC}{Multi-label Classification}
+\newacronym{mlp}{MLP}{Multi-layer Perceptron}
+\newacronym{nlp}{NLP}{Natural Language Processing}
+\newacronym{oaipmh}{OAI-PMH}{Open Archives Initiative Protocol for Metadata Harvesting}
+\newacronym{pos}{POS}{Part-of-speech}
+\newacronym{ram}{RAM}{Random Access Memory}
+\newacronym{rnn}{RNN}{Recurrent Neural Network}
+\newacronym{rds}{RDS}{Relational Database Service}
+\newacronym{rdf}{RDF}{Resource Description Framework}
+\newacronym{srt}{SRT}{Simple Representing Text}
+\newacronym{sota}{SOTA}{State-of-the-art}
+\newacronym{sgd}{SGD}{Stochastic Gradient Descent}
+\newacronym{si}{SI}{Subject Indexing}
+\newacronym{sm}{SM}{Supervised method}
+\newacronym{tu}{TU}{Technical University}
+\newacronym{umls}{UMLS}{Unified Medical Language System}
+\newacronym{um}{UM}{Unsupervised method}
+\newacronym{vm}{VM}{Virtual Machine}
+\newacronym{xmc}{XMC}{Extreme Multi-label Classification}
+
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{50}{60}}
+\makeatother
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+ 
+\begin{document}
+
+%title page
+\thispagestyle{empty}
+\begin{center}
+\begin{minipage}{0.9\linewidth}
+\centering
+	      		 
+	%University logo
+    \includegraphics[width=0.5\linewidth]{figures/tub.jpg}
+    \vspace{1cm}
+
+    % Title
+	{\scshape{\HUGE Master Thesis Draft\par}}
+	\vspace{1cm}
+	%Thesis title
+    {\scshape{\Large subject indexing for institutional repositories\par}}
+    \vspace{1.5cm}
+  
+ Author  \linebreak
+ {\Large Mohamed Mesto \par}
+ 	\vspace{1.5cm}
+
+\flushleft
+
+\begin{tabular}{ll}
+Berlin, 2022 \linebreak
+\vspace{1cm}&   \\
+  University ID: & 390*** \vspace{0.3cm} \\ 
+  Course: & Computer Science \vspace{0.3cm} \\
+  First Referee: & Prof. Dr. Manfred Hauswirth \vspace{0.3cm} \\
+  Second Referee: & Prof. Dr. Volker Markl \vspace{0.3cm} \\
+  Supervisor: & Dr. Sonja Schimmler \\
+ \end{tabular}
+
+\end{minipage}
+\end{center}
+\clearpage
+
+\pagebreak
+
+\tableofcontents \pagebreak
+
+\listoffigures \pagebreak
+
+\listoftables \pagebreak
+ 
+\printglossary[type=\acronymtype, style=super,  nonumberlist, nogroupskip] \pagebreak
+
+\input{authenticity} \pagebreak
+\input{abstract} \pagebreak
+
+\input{introduction}
+\input{problem}
+\input{repo_analysis}
+\input{subject_indexing}
+\input{hmc}
+\input{unsupervised_approach}
+\input{supervised_approach}
+\input{evaluation}
+\input{conclusion}
+
+\pagebreak
+\bibliographystyle{acm}
+\bibliography{references}
+\pagebreak
+
+\begin{appendices}
+    \input{appendix/ngrams_vocab}
+    \input{appendix/venue_mapping}
+    \input{appendix/supervised_experiments}
+\end{appendices}
+
+\end{document}
+% End of document.
