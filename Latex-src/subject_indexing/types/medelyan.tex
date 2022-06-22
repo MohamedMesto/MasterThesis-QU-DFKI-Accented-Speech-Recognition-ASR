@@ -1,0 +1,11 @@
+\subsubsection{Medelyan's classification} \label{subject_indexing_medelyan}
+
+Medelyan is the author of KEA++ \cite{medelyan2008domain}, a keyphrase extraction algorithm, and also of Maui \cite{medelyan2009human}, another popular indexing algorithm. She differentiates between two types of subject indexing approaches, which she then combines to develop the paradigm used by KEA++.
+
+\textit{Keyphrase extraction} consists of searching for relevant words or phrases in documents. They use solely intrinsic information, such as word frequency or document length. This type of indexing is free in the sense that any keyphrases can be extracted. There is no set of possible keyphrases, i.e. a \acrshort{kos}. The disadvantage of this kind of indexing methods is that the keyphrases won't necessarily have the same form (only words in singular, for example). Also, the presence of undetected synonyms may reduce the quality of the resulting index.
+
+\textit{Term assignment}, on the other hand, uses a \acrshort{kos}. These approaches often rely on string matching to find the keyphrases of the \acrshort{kos} in the documents. The most recent efforts in this field use machine learning methods to map keyphrases to documents. The disadvantage of using classifiers is that they require a lot of training data, whereas string matching method don't require any.
+
+\textit{Keyphrase indexing} combines the two approaches described above, which may be seen as complementary in terms of their strengths and weaknesses. The basic procedure is as follows: given a document, its candidate phrases are first mapped to the keyphrases of the \acrshort{kos} to remove uninformative words and avoid polysemy and synonyms; then, the remaining candidates are analyzed to extract the relevant ones.
+
+In KEA++ \cite{medelyan2008domain}, the analysis of the candidates consists of computing four features for each candidate. These features are fed to a \acrshort{ml} algorithm, which outputs a boolean value stating if the corresponding candidate should be assigned to the document or not. The \acrshort{ml} algorithm is supervised, i.e. it requires a training set. KEA++ uses the Naive Bayes algorithm, which offered the best results when compared with other supervised \acrshort{ml} algorithms like the SVMs and decision trees.

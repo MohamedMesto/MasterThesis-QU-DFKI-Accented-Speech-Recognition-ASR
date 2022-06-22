@@ -1,0 +1,10 @@
+\subsubsection{Latent Dirichlet Allocation} \label{subject_indexing_lda}
+
+Another unsupervised method that can be applied to subject indexing is \acrfull{lda} \cite{blei2003latent}. \acrshort{lda} is a probabilistic model where each document is given assignment probabilities for each of the subjects, describing it as a mixture of subjects. For example, a thesis about detecting tumors in medical images may be described as 70 \% \textit{machine learning} and 30 \% \textit{medicine}.
+
+\acrshort{lda} finds the relationships between subjects and documents by computing the probability of each word belonging to each subject, while considering the words of the documents. Documents are represented as a mixture of topics, which in turn are represented as a mixture of words. The task of \acrshort{lda} is thus to split the individual words into groups semantically, i.e. where the words of each group have similar meanings. The output of \acrshort{lda} are then the composition of each subject as a mixture of words, and the assignment of those compositions, which are the subjects, to the documents.
+
+The challenge when using \acrshort{lda} in subject indexing scenarios where a set of subject exists is that \acrshort{lda} does use any given subjects, but rather finds the subjects itself, as explained above. \cite{heryawan2021medical} addresses this issue by vectorizing the keywords of each subject output by \acrshort{lda}, as well as the subjects. The keywords and the subjects are then mapped in vector space with the cosine distance, which measures how similar the directions of the vectors are.
+
+Their existing set of subjects was the set of medical subject headings (MeSH), which they assigned to a set of medical documents, represented either by their abstract or their full text. Their evaluation shows that the subjects output by \acrshort{lda} have an average cosine similarity of 74 \% to the MeSH subjects.
+

@@ -1,0 +1,23 @@
+\subsection{Conclusion} \label{unsupervised_approach_conclusion}
+
+Here, we highlight the most important aspects of our implementation. We summarize each of the three steps, discussing their complexity. Overall, the implementation is time-consuming, as a lot of information has to be extracted from the repositories. We then present several aspects of our procedure which we believe have the most potential of improving the performance of our approach. These include extending the vocabulary and modifying the representations of documents and subjects.
+
+\subsubsection{Implementation}
+
+The implementation of this approach comprises three steps: building a vocabulary, creating representations for documents and subjects, and vectorizing them with the word embeddings we trained with the skip-gram model. We discuss each step in the following paragraphs.
+
+Building a vocabulary was straight forward. After processing the texts, we only discarded the tokens that appear in only one document, as they are too specific and cannot be used to relate documents to one another. Furthermore, their corresponding word embeddings cannot be trained properly because there are not enough training examples. We considered including phrases, as discussed in appendix \ref{appendix_ngram_vocab}, but discarded doing so because it added a lot of entries to the vocabulary, and many of them seemed uninformative.
+
+Creating the representations of the documents required mapping them to venues, so the venues could be used to enrich their representations. Extracting information from the repositories was tedious, as it appeared under different names in each repository, and sometimes also under several names within each repository. For example, the venue has a different tag depending on the publication type (journal article, proceedings, etc.). This makes sense regarding human readability, as there are different types of venues, but hinders information extraction processes.
+
+We also tried relating documents through their reference lists, but we barely found any references to documents of the repositories, so we discarded this step altogether. \acrshort{mag} could do so because of the larger size of their dataset. To represent the subjects, we had to retrieve their Wikipedia texts from the internet, select part of it and process it, which is also an expensive and time-consuming task. This is the only step that uses information outside our dataset.
+
+Regarding the skip-gram model, we successfully implemented it and trained the embeddings. We also presented an example that shows the semantic information encoded in the resulting vectors. As we will see in chapter \ref{eval}, these embeddings yield better performance than using pre-trained ones, which is a common practice in \acrlong{nlp}.
+
+\subsubsection{Room for improvement}
+
+In this final section, we discuss several aspects of our approach that we believe are important factors for explaining the performance of the model. We propose improvements for them, which may lead to better performance.
+
+The first one is the vocabulary. We experimented with including phrases (see appendix \ref{appendix_ngram_vocab}), but a qualitative assessment showed that most of them were just common sequences of words with no specific scientific meaning. We therefore discarded them because they dramatically increased the size of the vocabulary and the complexity of the representations. There are certain approaches to extracting phrases that we have not tried and could be useful. For example, \cite{mikolov2013distributed} iteratively merges n-grams if the ratio of times the n-grams occur together compared to alone exceeds a certain threshold.
+
+Another aspect where further experiments could improve performance is the representation of texts. For instance, not discarding duplicate words may allow the vector embeddings to describe the texts, as technical words that occur more often would be more influential on the final representation of the text, after adding the word vectors. However, meaningless words that occur often could lead to the opposite effect. Keeping duplicates also increases the computational cost.

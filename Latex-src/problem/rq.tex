@@ -1,0 +1,14 @@
+\subsection{Research question} \label{problem_rq}
+
+The research question this thesis attempts to answer is the following:
+
+\begin{quote}
+    \textit{What family of approaches, supervised or unsupervised, is more suitable for performing subject indexing in small and multidisciplinary repositories?}
+\end{quote}
+
+The distinction between supervised and unsupervised is made in the field of machine learning, which is the paradigm we plan on implementing, as it is the most powerful method according to the literature (see chapter \ref{subject_indexing}).
+
+Supervised approaches are those that learn through examples. They receive input-output pairs, and they are optimized to output what is expected for each of those inputs. The input-output pairs are usually called \textit{training data}, and the final performance of the model largely depends on its quality. Unsupervised approaches are fundamentally opposite: they learn to perform an action directly from the data, without any examples. They are based on the intuition that the data itself contains the necessary information for the model to perform its task
+\cite{hinton1999unsupervised}.
+
+Both approaches are interesting for our use case because of the size and content of our dataset. Supervised approaches have been proven more effective in most scenarios, and also in \acrshort{si} tasks. However, they require accurate training data, which is not available in our use case. The assignments of \acrshort{mag} are reported to be 80 \% accurate. Therefore, an unsupervised approach may offer better results in our use case. In this thesis, we explore the advantages and disadvantages of both approaches. We focus especially on \acrshort{si} accuracy, which is the ultimate goal, but also discuss other aspects such as the complexity of the implementation and computational cost.

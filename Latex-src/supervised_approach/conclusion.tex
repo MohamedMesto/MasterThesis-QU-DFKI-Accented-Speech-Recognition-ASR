@@ -1,0 +1,24 @@
+\subsection{Conclusion} \label{supervised_approach_conclusion}
+
+We conclude this chapter by discussing the complexity of the implementation and some aspects of the model that may be improved to increase the performance of the model. The implementation of the models, as well as gathering the training data, is easy to develop. On the other hand, processing the training data training the models is computationally expensive.
+
+We propose several improvements, mostly regarding the fact that the subject assignments are performed by an algorithm and not by a human. This means that its assignment noise could be modeled more easily, as the algorithms operates in a deterministic manner, whereas humans are not so consistent. Also, the assignment algorithm outputs confidence scores, which could also be used to improve the training procedure.
+
+\subsubsection{Implementation}
+
+The supervised approach was easy to implement. Gathering the training data didn't pose any difficulties because of the \acrshort{api} provided by OpenAlex. We vectorized the data in the same way we vectorized the documents of the repositories. Implementing the model also didn't pose any major challenges, as we used the architecture of related work \cite{gargiulo2019deep}. The further two papers we have implemented extended this initial model, both by modifying the loss function and one with an additional layer. Thus, the implementation time was much shorter than that of the unsupervised approach, which included numerous steps. On the other hand, this approach required training many models, which is computationally expensive. Processing the training data is also expensive.
+
+\subsubsection{Room for improvement}
+
+The hit rate of this approach can be easily improved by gathering more training data. Also, there are many techniques regarding the design and training of neural networks that may be experimented with, such as introducing batch or layer normalization \cite{ba2016layer}. Furthermore, there are two aspects from our use case that we have not considered:
+
+\begin{enumerate}
+    \item \textbf{Noise distribution}: model noise can be better modeled than human noise, because it is deterministic. Doing so would increase the performance of the model.
+    \item \textbf{Confidence scores}: models output confidence scores for the subject assignments, which could be included in the training procedure, e.g. as a replacement of binary labels.
+\end{enumerate}
+
+Both aspects derive from the nature of our training dataset, which was created by an algorithm rather than by humans. Addressing these two points could lead to further improvements in the performance of the model. Label noise is a common topic in the literature, as it is present in all datasets labeled by humans because of their inconsistency (\cite{morris2010individual}, \cite{medelyan2008domain}). Deep networks must handle noise appropriately because, if not, they may overfit on the corrupted labels \cite{chen2019understanding}. There are three ways of handling noise \cite{karimi2020deep}: through the selection of the model and the loss function, by cleaning the data, or by developing a model that models label noise.
+
+We have performed several data cleaning tasks, such as checking the language of the texts (see section \ref{repo_analysis_data}). Furthermore, the \acrlong{asl} models label noise better than \acrlong{bce}, as noise is not symmetric across positive and negative samples, given that positive ones are sparse \cite{zhao2021evaluating}. Still, modeling label noise may further increase the performance of the model, as our training data is estimated to have an assignment accuracy of 80 \% \cite{shen2018web}.
+
+Confidence scores could be used instead of binary labels while training the models. This may help the model assess which subjects are closer thematically to the document. However, it may also introduce more noise.

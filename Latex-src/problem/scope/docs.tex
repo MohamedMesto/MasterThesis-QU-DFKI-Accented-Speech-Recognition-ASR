@@ -1,0 +1,31 @@
+\subsubsection{Documents} \label{problem_scope_docs}
+
+The scope of this work are the publications and theses written in English. In the repositories there are also data files and other types of documents, but they are not suited for this work because of their lack of text and variety in format. Which document types are included in the dataset are shown in table \ref{tab:document_types}.
+
+Only English documents (and English metadata, for that matter) are considered because it greatly reduces the complexity of the task and doing so does not seem to reduce the quality of the data. For example, out of the 28,720 documents present in the Free University's repository, 21,701 of them have the same number of English subjects as they have German subjects. A probable cause of this is that ones are the translations of the others. If this were the case, discarding the German subjects would not imply information loss. Also, adding other languages to the \acrshort{si} pipeline would not introduce any major changes in how we assign subjects to documents. There is therefore no research interest in doing so.
+
+Instead of using the full texts of each document, we will only use the titles and the abstracts. This should reduce the computational cost of our approaches and also facilitate the encoding task, as only the most important aspects covered by the paper are taken into account. Using the full texts could potentially reduce the quality of the encodings, as they cover more topics. Especially theses, which sometimes comprise hundreds of pages and are broad in their content, would be expensive to process and hard to index.
+
+We also harvest further metadata from the documents, such as subjects, publication venues, as well as the advisors and referees of theses. All these are used to create evaluation datasets, as explained in section \ref{eval_datasets}, and all except the subjects are also part of the unsupervised approach.
+
+\begin{table}
+\begin{center}
+ \begin{tabular}{| c | c | c|} 
+ \hline
+ \thead{Kept?} & \thead{Group} & \thead{Types} \\ [0.5ex]
+ \hline\hline
+ \makecell{Yes} & \makecell{Thesis} & \makecell{Doctoral thesis, Bachelor thesis, Master \\ thesis, Study thesis, Habilitation} \\ 
+ \hline
+ \makecell{Yes} & \makecell{Publication} & \makecell{Preprint, Book part, Book, Article, \\ Conference proceedings, Conference \\ object, Periodical part, Working paper, \\ Research paper, Report} \\
+ \hline
+ \makecell{No} & \makecell{Data} & \makecell{Video, 3D Model, Textual data, Audio, \\ Sound, Moving image, Image, Dataset, \\ Generic research data, Research data} \\
+ \hline
+ \makecell{No} & \makecell{University} & \makecell{Course material, Lecture} \\
+ \hline
+ \makecell{No} & \makecell{Other} & \makecell{Draft, Software, Collection, Review, Other} \\
+ \hline
+\end{tabular}
+\caption{All the document types present in the three repositories. The groups are only for clarity.}
+\label{tab:document_types}
+\end{center}
+\end{table}

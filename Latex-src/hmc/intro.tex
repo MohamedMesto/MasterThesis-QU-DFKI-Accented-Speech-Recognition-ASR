@@ -1,0 +1,15 @@
+\subsection{Introduction} \label{hmc_intro}
+
+Classification problems are those where input objects are categorized with labels. \acrfull{mlc} refers to the family of classification problems where each input object can be assigned multiple labels, if any \cite{gargiulo2019deep}. And, finally, \acrfull{hmc} is a specific case of \acrfull{mlc} where the labels form a hierarchy \cite{wehrmann2018hierarchical}.
+
+$$ HMC \subset MLC \subset Classification $$
+
+Another subset of \acrshort{mlc} problems that is relevant for our use case is Extreme Multi-label Classification (XMC), where the number of labels is very large. \cite{gargiulo2019deep} states that scenarios with thousands of labels already belong to XMC, whereas \cite{liu2017deep} raises the number to hundreds of thousands. The main issues that XMC faces are scalability and data sparsity. The second one is also relevant in \acrshort{hmc}, as labels in the lower levels of the hierarchy are often underrepresented in the training data, which leads to worse categorization performance \cite{shimura2018hft}. In our use case, where the labels are 2,157 subjects, scalability is not an issue. We therefore don't research the XMC literature any further, as \acrshort{hmc} already addresses the data sparsity issue.
+
+Before moving on to the relevant literature and neural network architectures, we briefly present a classification of \acrshort{hmc} methods, where two paradigms that are ubiquitous in the literature are discussed.
+
+\subsubsection{Classification of HMC methods}
+
+\acrshort{hmc} problems can be addressed in two different ways, either locally or globally \cite{wehrmann2018hierarchical}. \textit{Local learning} comprises a collection of classifiers, where each classifier is responsible for a hierarchy level, or a subtree of the hierarchy. On the other hand, \textit{global learning} consists of one classifier that is responsible for all subjects.
+
+Local learning is better at incorporating local information from different regions of the label hierarchy. However, it is prone to overfitting, as it analyzes the training data more closely. Global learning suffers from the opposite danger: it may underfit the training data, as it is less likely to capture local information. Another difference between the two approaches is their computational cost. Local learning is more expensive, since it relies on a cascade of classifiers, whereas global learning comprises just one classifier. One final issue with local learning is that errors are propagated throughout the collection of classifiers. The uncertainty surrounding each local loss of a classifier hinders the performance of the next. Global learning does not have this problem.

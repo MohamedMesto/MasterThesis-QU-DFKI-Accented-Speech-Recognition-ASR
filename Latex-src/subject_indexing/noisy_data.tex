@@ -1,0 +1,15 @@
+\subsection{Training deep learning models with noisy data} \label{noisy_data}
+
+Data sets that are used to train machine learning models often suffer from label noise. This issue arises from the challenge that labeling large data sets poses. Gathering a group of experts that manually label hundreds of thousands of data points is almost always unfeasible. Alternatives like crowdsourcing and online queries reduce the cost of labeling data, but ultimately lead to label noise \cite{chen2019understanding}.
+
+Noisy data is a problem for supervised algorithms. Especially for deep networks, where the noisy labels may lead the network to overfit on the corrupted labels \cite{chen2019understanding}. There are three common approaches for handling noisy data \cite{karimi2020deep}, which vary on the phase in which they address the issue.
+
+\begin{enumerate}
+    \item \textbf{Model selection}: select models that are robust to label noise, as well as an appropriate loss function. Other techniques such as bagging and re-weighting training samples have also been proven to be useful.
+    \item \textbf{Data cleaning}: reduce the noise of the data by e.g. by using a classifier that outputs a confidence measure or applying a voting rule to the outcome of several classifiers. Another approach is to use k-nearest neighbors to remove incorrect labels.
+    \item \textbf{Unified framework}: combine a classifier's training phase with label noise modeling. For example, one can down-weight samples that are likely to be corrupt while training. These methods often use approaches from the two categories above.
+\end{enumerate}
+
+The ubiquity of noise in data sets doesn't seem to hinder the success of deep learning methods, which have achieved state-of-the-art results in many problems. Deep networks may be able to overcome noise because of the distributed and hierarchical design choices as well as the regularization techniques that are used when developing them \cite{arpit2017closer}.
+
+\cite{rolnick2017deep} shows that convolutional neural networks offer high test performance (over 90 \% in some cases) when trained on corrupted versions from large data sets such as MNIST or CIFAR. Their training procedure requires a large data set to increase the number of correct labels.

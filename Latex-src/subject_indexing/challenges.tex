@@ -1,0 +1,29 @@
+\subsection{Challenges of Subject Indexing} \label{subject_indexing_challenges}
+
+Here we present the common challenges faced by subject indexing approaches. They comprise the heterogeneity of the data, which increases the complexity of the task, as well as its size, which limits the implementation of machine learning approaches. The style of the texts, e.g. if they are scientific also impacts the performance of the approaches. Finally, we talk about the role of some characteristics of the subjects, such as how frequently they are assigned to documents, or their importance over time.
+
+\subsubsection{Regarding the documents}
+
+One important challenge is data heterogeneity \cite{kasprzik2020putting}. Because of the lack of strict standards, different users may introduce data into the repositories in different ways, which increases the complexity of performing \acrshort{si}. These issues have to be addressed through data cleaning and by developing models that are robust to noise.
+
+The size of the dataset is often an obstacle for many methods. \cite{zhang2015character} believes that deep learning approaches only make sense when the training data exceeds 650 thousand examples. This estimate is confirmed by a subject indexing experiment \cite{mai2018using}, where the dataset that was well below the threshold was outperformed by the models trained on larger datasets.
+
+Finally, the style of text, as well as its vocabulary and how technical it is, also play an important role. For instance, the developers of Annif \cite{suominen2019annif} state that its framework performs worse on technical fields where technical terms are frequent. They believe this is because of how precise such texts and terms are, in contrast with the broader meaning of concepts in humanities.
+
+\subsubsection{Regarding the subjects}
+
+The used subjects in the indexing task may also pose some difficulties for the indexing task. The first one is the different frequencies with which subjects are assigned to documents, where some subjects occur more often than others. This phenomenon can be explained with \textit{Zipf's law}: when ranked by frequency, the frequency of each subject is half of its predecessor \cite{toepfer2020fusion}.
+
+This imbalance makes it difficult for models to learn when to assign subjects that rarely occur in the documents. Subjects that rarely occur are better assigned by unsupervised algorithms, whereas frequent subjects can be assigned with \acrlong{mlc} algorithms, as there are enough positive training example for the classifier to learn \cite{erbs2013bringing}. Another way of addressing this imbalance is to train independent binary classifiers for each subject, which provide more flexibility \cite{banerjee2019hierarchical}. However, this approach is only feasible when the number of subjects doesn't exceed a few hundreds because of its computational cost.
+
+Another aspect of subjects that should be considered is how their assignment frequency changes over time \cite{toepfer2020fusion}. New subjects appear all the time, whereas others are slowly forgotten. For example, an institutional repository may have a lot of documents handling \textit{unsupervised learning} one year, but the research focus may shift towards \textit{supervised learning} the following year.
+
+These changes in frequency affect the distribution of the subjects over time, which is used by statistical methods. Thus, a model that works well during development may fail to correctly assign subjects to new documents in the future if it does not adapt to the changes in the subject distribution. They can be addressed by combining statistical and matching approaches, as each covers the weaknesses of the other \cite{toepfer2020fusion}.
+
+\subsubsection{Regarding the training data}
+
+Supervised methods require examples of subject assignments from which to learn how subjects are mapped to documents. There are a couple of challenges that these training sets may pose.
+
+The first problem may arise from the number of subjects. If it is too large, the required number of annotated documents significantly increases, as there are fewer documents representing each subject. This issue may also arise if the subjects form a complex hierarchy, where the subjects of the bottom levels are very specific and barely have any assignments. This issue is related to the different frequencies of subjects, which was stated above.
+
+Another problem that often arises when using training data is the frequent contradictions that are contained in the documents. There is a lack of standard data collections, and using different annotations for a set of documents when training an \acrshort{ml} algorithm has been shown to lead to very different results \cite{yang1999evaluation}. According to a study involving 26 participants and 3 texts, the interpretations differed on about 40 \% \cite{morris2010individual}. Another example is given by \cite{medelyan2008domain}, which shows an agreement between indexers of 39 \%.
