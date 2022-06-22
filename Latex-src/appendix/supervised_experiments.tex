@@ -1,0 +1,11 @@
+\section{Experiments of the supervised approach} \label{supervised_approach_experiments}
+
+We performed several experiments to optimize the parameters of the supervised approach. They are divided into three sections. First, three experiments regarding the architecture and training pipeline are performed. They test two different dropout rates, two sizes for the hidden layer and two different learning rate schedulers. The results of these three experiments are used in the following experiments.
+
+The next row of experiments involve around the \acrfull{asl}, which replaces the \acrshort{bce} loss function that was used in previous experiments. Each experiment focuses on one of its two parameters, to find the best configuration for our use case.
+
+Finally, the last experiment assesses the combination of the \acrshort{asl} and the \acrfull{mcl} for the coherent model, which is exactly the same as the one used in previous experiments, but which an additional layer on top, called the \acrlong{mcm}. Given that both the \acrshort{asl} and the \acrfull{mcl} extend the \acrshort{bce} loss function, we can combine them. We evaluate if doing so is more performant than the original loss function of the coherent model (the \acrshort{mcl}).
+
+\input{appendix/models/design_choices}
+\input{appendix/models/asl}
+\input{appendix/models/coherent}
