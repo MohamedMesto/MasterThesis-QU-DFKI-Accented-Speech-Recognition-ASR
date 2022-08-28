@@ -19,8 +19,9 @@ Quality and Usability Lab</a></h5> </td>
     <td> </td>
 </tr>
   <tr>
-    <td> </td>  <td align="center"><a href="https://www.dfki.de/web">Supervisor Dr. Tim Polzehl
-    </a></td>
+   Accented Speech Recognition
+    <td> </td>  <td align="center"><a href="https://www.qu.tu-berlin.de/menue/team/professur/biographie/">	Prof. Dr. Sebastian Möller</a></td>
+    <td> </td>  <td align="center"><a href="https://www.linkedin.com/in/tim-polzehl-45a10a36/">Supervisor Dr. Tim Polzehl    </a></td>
     <td> </td>
 </tr>
 </table>
