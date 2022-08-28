@@ -15,7 +15,7 @@ Quality and Usability Lab</a></h5> </td>
 </tr>
   <tr>
     <td> </td>
-<td align="center"><h5><a href="https://github.com/fraunhoferfokus">"Comparison in between Emformer"</a></h5></td>
+<td align="center"><h5><a href="https://github.com/fraunhoferfokus">"Accented Speech Recognition"</a></h5></td>
     <td> </td>
 </tr>
   <tr>
@@ -25,7 +25,7 @@ Quality and Usability Lab</a></h5> </td>
 </tr>
 </table>
 
-# MasterThesis: comparison in between Emformer
+# MasterThesis: Accented Speech Recognition
 ## In progress 09.08.2022 - 07.02.2023
 ## Abstract
 ......
