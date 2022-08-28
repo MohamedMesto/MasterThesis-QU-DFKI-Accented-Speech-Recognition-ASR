@@ -11,18 +11,17 @@ Quality and Usability Lab</a></h5> </td>
 <td> </td><td  align="center"><h5> Thesis Topic </h5> </td><td> </td>
 </tr>
 <tr border=0>
-<td> </td><td> </td><td> </td>
+<td> </td> <td align="center"><h5><a href="https://github.com/fraunhoferfokus">"Accented Speech Recognition"</a></h5> </td><td> </td>
 </tr>
   <tr>
     <td> </td>
-<td align="center"><h5><a href="https://github.com/fraunhoferfokus">"Accented Speech Recognition"</a></h5></td>
+<td align="center">Supervisors</td>
     <td> </td>
 </tr>
   <tr>
-   Accented Speech Recognition
-    <td> </td>  <td align="center"><a href="https://www.qu.tu-berlin.de/menue/team/professur/biographie/">	Prof. Dr. Sebastian Möller</a></td>
-    <td> </td>  <td align="center"><a href="https://www.linkedin.com/in/tim-polzehl-45a10a36/">Supervisor Dr. Tim Polzehl    </a></td>
-    <td> </td>
+    <td> </td>  <td align="center"><a href="https://www.qu.tu-berlin.de/v-menue/team/professur/">	Prof. Dr. Sebastian Möller</a> </br><a href="https://www.linkedin.com/in/tim-polzehl-45a10a36/"> Dr. Tim Polzehl    </a></td>
+      <td align="center"></td>
+    
 </tr>
 </table>
 
