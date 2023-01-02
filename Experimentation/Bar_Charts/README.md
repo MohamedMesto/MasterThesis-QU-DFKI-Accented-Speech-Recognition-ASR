@@ -1,2 +1,2 @@
 
-# Bar Charts of Durations /WER according to Accent, Gender, Age 
+# Bar Charts of Durations according to Accent, Gender, Age. Word Error Rate according to Accent, Gender, Age 
