@@ -1,9 +1,0 @@
-\subsection{Recurrent networks}
-
-Recurrent neural networks are similar to feed-forward networks, but their nodes do form a cycle, This allows them to exhibit temporal behavior, i.e. they can handle sequential data. They are also characterized by their efficiency, as weights are shared across the layers (which are iterations in the presence of recurrence), making recurrent networks much smaller than feed-forwad networks.
-
-\subsubsection{HMC Networks}
-
-\cite{wehrmann2018hierarchical}, whose feed-forward network we presented above, also proposes a recurrent architecture. The feed-forward architecture already resembles a recurrent network, with each layer having its own input and output, while being sequentially communicated with other layers. Therefore, modifying it to be recurrent is straight forward. Doing so also addresses an issue of the feed-forward network, namely that the number of parameters increases with the number of hierarchy levels. Recurrent networks share weights across layers, therefore having a constant number of weights, regardless of the number of levels in the hierarchy.
-
-The authors used a Long Short-Term Memory (LSTM) architecture for their recurrent network, which already regulates the gradient and thus prevents it from vanishing during the backward pass. The recurrent network was slightly worse than the feed-forward one, but is much smaller in terms of parameters. In one of their experiments, the feed-forward architecture had seven million parameters, whereas the recurrent network had three million. The authors recommend using the recurrent network for hierarchies with many levels, as in such cases the difference in size between the architectures is larger and the minimal gain in performance is not worth the additional complexity.
