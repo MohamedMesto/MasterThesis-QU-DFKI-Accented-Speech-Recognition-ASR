@@ -1,0 +1,111 @@
+
+1- We explore options to use Transformer networks in neural trans- ducer for end-to-end speech recognition
+
+ Conventionally, speech recognition sys- tems involve individual components for explicit modeling on dif- ferent levels of signal transformation: acoustic models for audio to acoustic units, pronunciation model for acoustic units to words and language model for words to sentences.
+******
+
+
+ Conventionally, speech recognition systems involve individual components for explicit modeling on different levels of signal transformation: acoustic models for audio to acoustic units, pronunciation model for acoustic units to words and language model for words to sentences.
+ 
+ ****************
+ 
+Dysarthric speech recognition has posed major challenges due to
+lack of training data and heavy mismatch in speaker characteris-tics. Recent ASR systems have benefited from readily available
+pretrained models such as wav2vec2 to improve the recognition
+performance.
+******
+One of the promising technologies in this field
+**********
+One of the new technologies that grabbed the spotlight
+*************
+
+
+The following is a brief introduction to each approach as well as its advantages and disadvantages. A more detailed discussion of specific streaming and nonstreaming audio formats follows.
+
+
+
+***********
+
+DNNs find nowadays applications across a rich variety of do- mains, including computer vision, language translation, and speech or recognition. Alongside the increase of available computing power, DNNs’ architectures have became extremely involved and may consist of up to millions of trainable parameters. Such complexity makes the important task of understanding why a model outputs a certain prediction challenging [1].
+
+
+*************************
+
+
+
+
+ Two basic steps make this conversion possible: First, the audio is converted into a sequence of probabilities over characters in the alphabet. Secondly, this sequence of probabilities is converted into a sequence of characters.
+ 
+ 
+ ************************
+ 
+ The first step is made possible by a Deep Neural Network, and the second step is made possible by an N-gramlanguage model. The neural network is trained on audio and corresponding text transcripts, and the N-gram language model is trained on a text corpus (which is often different from the text transcripts of the audio). The neural model is trained to predict the text from speech, and the language model is trained to predict text from preceding text. At a very high level, you can think of the first part (the acoustic model) as a phonetic transcriber, and the second part (the language model) as a spelling and grammar checker.
+ 
+ **
+ 
+ 
+ interdisciplinary
+ 
+ **********
+ tedious - boring
+ ************
+  
+ To deal with the aforementioned challenge, in this work, we
+propose CrossASR, an approach that capitalizes the existing Text- To-Speech (TTS) systems to automatically generate test cases for ASR systems.
+
+*****************
+
+CrossASR efficiently generates test cases to uncover failures with as few generated tests as possible; it does so by employing a failure probability predictor to pick the texts with the highest likelihood of leading to failed test cases. As a black-box approach, CrossASR can generate test cases for any ASR, including when the ASR model is not available (e.g., when evaluating the reliability of various third-party ASR services).
+*******************
+ Due to the rapid growth of AI and the proliferation of AI-
+powered systems, recently, many works have been proposed to test such systems, e.g., [5]–[8]. Although AI testing is a very active area, unfortunately, only a few are designed for ASRs. A recent survey by Zhang et al. [9], highlighted that: “The testing tasks currently tackled in the literature, primarily center on image classification. 
+
+
+There remain open exciting testing research opportunities in many other areas, such as speech recognition, natural language processing, and agent/game play.”. Due to the ubiquity of ASR, there is certainly a need for more work on ASR testing.
+*****************
+
+These techniques have mainly been applied to image object classification and natural language processing
+
+*****************
+
+ 
+
+In this context, a class of interpretability algorithms called attribution-based methods has been developed [3, 4] to evaluate the attributions of certain features of the DNN’s input, that is,
+attribution-based methods has been developed [3, 4] to evaluate the attributions of certain features of the DNN’s input, that is, their effect on the output. In the past, these techniques have
+the attributions of certain features of the DNN’s input, that is, their effect on the output. In the past, these techniques have been mainly applied to image object classification and natu-their effect on the output. In the past, these techniques have been mainly applied to image object classification and natu- ral language processing [5, 6] and the question whether simi-been mainly applied to image object classification and natu- ral language processing [5, 6] and the question whether simi- lar techniques can provide insights in ASR remains open. In
+ral language processing [5, 6] and the question whether simi- lar techniques can provide insights in ASR remains open. In this paper, we address this question focusing on the example of
+lar techniques can provide insights in ASR remains open. In this paper, we address this question focusing on the example of DeepSpeech and discuss how attribution-based approaches can
+this paper, we address this question focusing on the example of DeepSpeech and discuss how attribution-based approaches can help to enable model transparency.
+DeepSpeech and discuss how attribution-based approaches can help to enable model transparency. Indeed, a better understanding
+
+
+In this context
+
+
+*********
+ Our scope in this chapter is to apply these techniques to natural language processing in general and ASR and Deepspeech in particular.
+ 
+***************
+
+Here, we show how attribution-based approaches can help
+to enable model transparency for ASR. Focusing*
+************
+With neural networks becoming more and more complex, ex- planation or interpretation methods have become an important tool to gain insights on the networks’ inner workings. Despite possible shortcomings [19, 6], 
+*************
+
+
+Speech recognition for in-domain audio has reached high lev- els of performance[1] and widespread use. However, ASR per- formance degrades significantly on accented speech[2]. Thus, accent-robustness is needed for speech recognition to be solved in the wild
+
+
+
+
+
+
+********************************
+ new from of references to add to the thesis
+
+Ghorbani et al.[15] explore a special case of multi-task
+learning to improve recognition of non-native speech. The au- thors train a multi-lingual end-to-end model with separate out- put layers for English, Spanish, and Hindi. They
+
+
+*********************

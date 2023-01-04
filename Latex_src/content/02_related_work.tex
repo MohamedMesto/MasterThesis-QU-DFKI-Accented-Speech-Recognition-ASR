@@ -1,0 +1,185 @@
+\chapter{Literature Review}
+\label{cha:relatedwork}
+
+
+
+
+\section{Speech Recognition}
+
+
+During the last decades, the reliability of the speech recognition system has increased and its use in solving many industrial, medical and various challenges in different areas of daily life\cite{benesty2008automatic}.
+Automatic Speech Recognition (ASR), computer speech recognition, or Speech-To-Text (STT) are all terms for the concept of speech recognition. It is a sub-domain of the joint work between computer science, computer engineering, and computational linguistics. His work is summarized by approaches and procedures that allow the recognition of spoken language and its translation into text by computers\footnote{https://www.wikipedia.org/}.
+In this paper, we will discuss some of these techniques, the most important of which are: Emformer Model \cite{shi2021emformer,dai2019transformer}, DeepSpeech Model \cite{markert21_spsc}, Wav2vec2 \cite{karthick2022speaker}, Transformer-Transducers \cite{yeh2019transformer}, Conformer Model \cite{gulati2020conformer}, Recurrent Neural Network Transducer (RNN-T)\cite{zhang2020transformer}, and others. The following is a brief intro to each method as well as its advantages and disadvantages.
+
+\section{Acoustic Models}
+\subsection{Non-streaming versus Streaming Models}
+
+Audio formats performed through the Web fall into two general classifications. The user must download non-streaming audio files to the user's hard disk before being able to play after that, unlike Streaming audio files, which can play almost immediately and continue playing while they are downloading. However, each category has advantages and disadvantages. In artificial intelligence algorithms specialized in dealing with linguistics, stream processing is a programming layout that considers data streams, or series of events in time, as the primary input and output entities of analysis. Parallel computing empowers the Stream processing systems for data streams and relies on streaming algorithms for efficient performance\footnote{https://www.wikipedia.org/}.
+
+ 
+ An additional detailed discussion of specific streaming and non-streaming acoustic models follows.
+
+
+
+
+\subsection{AM-TRF Model}
+The Streaming Transformer with Augmented Memory (AM-TRF) \cite{wu2020streaming} ...
+
+\textbf{\ref{fig:AM-TR-Emformer}a}
+
+ 
+
+
+
+\subsection{Emformer Model }
+%\subsubsection{Motivation}
+Efficient Memory transformer based acoustic model for low latency streaming speech recognition is referred to simply as Emformer. It is one of the promising technologies in Accented Speech Recognition field. It earns this position because of the enhancement of the AM-TRF model. First, Emformer reduces the enumeration by extracting the repeated calculation from the left context block by caching the key and value in earlier segments' self-attention. Second, Emformer carries over the memory bank from the lower layer instead of passing the memory bank within the recent layer in AM-TRF motivated from the Transformer-XL features \cite{dai2019transformer, lu2020exploring}. Third, Emformer stops the resume vector's attention with the memory bank to evade overweighting the most left element of context information. Finally, the significant property of the Emformer for low latency speech recognition is presented in a parallelized block processing training strategy \cite{shi2021emformer}.
+
+%\subsubsection{Emformer Mechanism}
+
+As shown in the previous paragraph, though, the AM-TRF has proven itself in the field of Accented Speech Recognition\cite{wu2020streaming}. But his performance in the left context was unsatisfactory. Moreover, The main impetus behind the development of the Emformer technology is due to the shortcomings in implementing concatenated processing by AM-TRF.  Figure \textbf{\ref{fig:AM-TR-Emformer}b} shows one layer of the Emformer. The following subsections represent the significant advancements completed in Emformer.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1 \textwidth]{images/AM-TR-Emformer.png}\\
+	\caption{Comparison of AM-TRF with Emformer overlapping}
+    \caption*{\cite{shi2021emformer}}
+	\label{fig:AM-TR-Emformer}
+\end{figure}
+
+
+
+
+
+
+\begin{itemize}
+    \item Cache key and value from previous segments
+ 
+
+
+In the AM-TRF model, Figure \textbf{\ref{fig:AM-TR-Emformer}a} , the re-computation of \( L_{i}^{n}\) for every step is required during the processing. Hence we need only to cache the projections from the earlier segments. The improvements of the Emformer are displayed in Figure \textbf{\ref{fig:AM-TR-Emformer}b}. There is only demand to compute the key, and value projections for the memory bank, center, and right context. Besides, Since there is no need to give output from the left context block for the next layer, Emformer holds the computation of query projection of the left context.
+
+ To understand the superiority of the Emformer over the AM-TRF, we will assume the following:\\
+M: is the length of the memory bank. \\
+L: is the length of the left context block.\\ 
+R: is the length of the right context.\\ 
+C: is the length of the center context. \\
+h: is the number of heads in the multi-head self-attention, and per head dimension is d. \\
+Besides, the mean of the center segment That takes the value one is equal to the summary vector \( S_{i}^{n}\). Nevertheless, the model dimension, dh, is substantially more enormous than any of M, L, R, and C. The implementation of the memory bank utilizes a ring buffer form with a short length. Hence, the Emfromer is more efficient than the AM-TRF by keeping around \(  \frac{L}{L+R+C}\)  of AM-TRF computation \cite{shi2021emformer}.
+
+
+ 
+ \item Carryover Memory Vector from Earlier Segments in the Lower Layer
+
+
+
+
+To benefit from the opportunities proposed by the Graphics processing unit (GPU), Emformer supports block processing in parallel during the training stage. It takes the memory bank input from previous segments in the lower layer instead of the same layer. Accordingly, the whole sequence is trained in parallel for each Emformer layer \cite{shi2021emformer}. Unlikely to the AM-TRF Method. Whereas the auto-regression feature causes the block processing to be sequential.
+ 
+ \item Prevent Attention between the Summary Vector with the Memory Bank
+
+To avoid the gradient disappearance or damage in the Emformer Technology. Moreover, to achieve a stable training accuracy for long-form speech, we need to allocate the attention weight between the summary vector and the memory bank to zero. At odds, embedding the memory bank information in the recent memory vector amplifies the most left context information \cite{shi2021emformer}.  
+
+
+ \item Look-Ahead Context Leaking handling
+
+During the training scenario, Emformer handles the input sequence quite parallel. Instead of physically dividing the input sequence into each layer, Emformer involves attention masks to limit the reception field \cite{dai2019transformer,chen2021developing}. Unfortunately, this method has disadvantages represented in the look-ahead of context leaking. Adding to the actual size of the right context is when multiple transformer layers are stacked on top of each other. The right side of
+ Figure \textbf{\ref{fig:Avoiding-look-ahead-context-leaking}} shows how the Emformer avoids the look-ahead context leaking case during the training process. Emformer produces a hard copy of each segment's look-ahead context and sets the look-ahead context copy at the input sequence's start. To understand the concept, as we notice, the output in frame 5 in the first chunk only uses the information from the current piece jointly with frame 8 of the right context, excluding the right context leaking.
+
+ 
+
+ 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{images/Avoiding-look-ahead-context-leaking.png}\\
+	\caption{ Representative of preventing look-ahead context leaking. Considering that:\\
+	The chunk size value is 4, and the right context size is 1}
+    \caption*{\cite{shi2021emformer}}
+	\label{fig:Avoiding-look-ahead-context-leaking}
+\end{figure}
+
+
+\end{itemize}
+
+
+
+
+\subsection{Deepspeech Model}
+
+
+%\subsubsection{Motivation}
+
+ 
+Alongside human life development, ASR systems' challenges are becoming very high due to the complicated architecture of deep neural networks (DNNs). Moreover, information systems that depend on audio inputs have integrated all the service devices surrounding us. Including IoT and personal identification systems in the home, Alexa\footnote{https://developer.amazon.com/en-GB/alexa} has a built-in ASR to comprehend our instructions. In our cars like summalinguae\footnote{https://summalinguae.com/language-technology/the-present-and-future-of-in-car-speech-recognition/}, workplace ,or PCs (e.g., to speak with Cortana\footnote{https://www.microsoft.com/en-us/cortana/} virtual assistant in Windows PC). Furthermore, in our mobile devices, there are ASRs that we can use to type texts or communicate with a mobile virtual assistant (e.g., Siri\footnote{https://www.apple.com/siri/} and Google Assistant\footnote{https://assistant.google.com/}). Which increased the risks of manipulating them on the lives of individuals or societies to an unimaginable extent \cite{hu2019adversarial,abdullah2021sok}. These manipulated inputs are called audio adversarial examples. The goal of these procedures is to deliver audio inputs different from the natural inputs to break into the property of others, such as accessing and controlling the work system of a company, house, or car. This misconception may risk the privacy of people \cite{carlini2018audio,mitev2020leakypick}.
+
+In this chapter, as a study use case, we will focus on, DeepSpeech, an End-to-End model for ASR. Furthermore, Deeply highlights a class of interpretability algorithms named attribution-based approaches \cite{ancona2017towards,sundararajan2017axiomatic}. This strategy aims to estimate the DNN's most significant input's attributions to the output's behavior. Hence, we handle three visualization techniques: Shapley Additive Explanations (SHAP), Layer-wise Relevance Propagation (LRP), and Saliency Maps. We compare these methods and discuss possible applications, such as detecting adversarial examples \cite{carlini2018audio, qin2019imperceptible, dorr2020towards}.
+
+
+
+%\subsubsection{Deepspeech Mechanism}
+
+ The input of the DeepSpeech function is digital audio to generate the output "considerable possible" text transcript of that audio. Which grant it the name "automatically transcribing spoken audio tool." \footnote{https://mozilla.github.io/deepspeech-playbook/}.
+
+The mechanism of action of the DeepSpeech represented in 
+taking a stream of audio as input and converting that stream of audio into a sequence of characters in the established alphabet \cite{asyrofi2020crossasr}. Since there are two phases to be implemented. The audio is converted into a series of possibilities over characters in the alphabet in the first stage. Secondly, this series of options is converted into a string of characters.
+To achieve the first stage, we employ the Deep Neural Network. The DNN is trained on the audio and matchable text transcripts. Moreover, the neural model is qualified to predict the text from speech. Therefore, the first phase, the acoustic model, is well-deservedly called a phonetic transcriber. Besides, an N-gram language model is involved in accomplishing the second phase \cite{markert2022language,michel2019evaluation}. The N-gram language model is trained on a text collection that is usually various from the text transcripts of the audio. Furthermore, The language model is trained to predict text from the previous text. In other words, we can consider the language model as a spelling and grammar checker.
+
+% \subsubsection{Layer-wise Relevance Propagation (LRP)}
+
+
+% \subsubsection{Saliency Maps}
+
+% \subsubsection{Shapley Additive Explanations (SHAP)}
+ 
+
+
+
+% \subsubsection{Background on DeepExplain and DeepSpeech}
+
+
+ \textbf{\ref{fig:Architecture-of-CrossASR}} 
+
+
+
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{images/Architecture-of-CrossASR.png}\\
+	\caption{Architecture of CrossASR}
+    \caption*{\cite{asyrofi2020crossasr}}
+	\label{fig:Architecture-of-CrossASR}
+\end{figure}
+
+
+
+\subsection{Wav2Vec2 Model}
+
+\subsection{Conformer Model}
+\subsection{RNN-T Model}
+% \subsection{RIVA Model}
+
+ 
+
+
+
+\section{Language Models}
+\subsection{N-gram Model}
+\subsection{Transformer Model}
+\subsection{GPTx Model}
+
+
+\section{Streaming/non-streaming Models}
+
+
+\chapter{Data Augmentation}
+\section{Data Augmentation - Noise Factor}
+\section{Data Augmentation - Time Factor}
+ 
+
+ 
+
+ 
+
+
