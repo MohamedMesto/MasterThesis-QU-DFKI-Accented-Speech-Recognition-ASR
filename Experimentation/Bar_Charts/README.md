@@ -4,3 +4,4 @@
 ![](plotBarDiagrams_Accent_Duration111.png) 
 ![](plotBarDiagramsAccent_gender.png)
 ![](plotBarDiagramsAccent_age.png) 
+![](plotBarDiagrams_Accent_WER.png)
