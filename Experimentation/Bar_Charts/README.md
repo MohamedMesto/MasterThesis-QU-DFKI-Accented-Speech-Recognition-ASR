@@ -10,3 +10,5 @@
 ![](plotBarDiagrams_Accent_WER.png)
 ## Bar Chart Diagrams of Accent's WER according to gender
 ![](plotBarDiagrams_Accent_WER_gender.png)
+## Bar Chart Diagrams of Accent's WER according to Age groups
+![](plotBarDiagrams_Accent_WER_age.png)
