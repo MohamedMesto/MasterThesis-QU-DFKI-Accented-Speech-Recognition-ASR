@@ -1,7 +1,7 @@
 
 # Bar Charts of Durations according to Accent, Gender, Age. Word Error Rate according to Accent, Gender, Age 
 ## Bar Chart Diagrams of Accent's according to Audio Duration
-![](plotBarDiagrams_Accent_Duration111.png)
+![](plotBarDiagrams_Accent_Duration.png)
 ## Bar Chart Diagrams of Accent's according to gender
 ![](plotBarDiagramsAccent_gender.png)
 ## Bar Chart Diagrams of Accent's according to Age groups
