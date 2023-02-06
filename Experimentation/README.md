@@ -1,6 +1,6 @@
 <table border=0>
 <tr border=0>
-<td> <img align="left"  alt="Mohamed Mesto" width="100px" height='60px' src="https://www.ods.tu-berlin.de/fileadmin/Aperto_design/img/logo_01.gif"/> </td>
+<td> <img align="left"  alt="Mohamed Mesto" width="100px" height='60px' src="https://github.com/MohamedMesto/MohamedMesto/raw/main/Images/QU-Lab.png"/> </td>
   <td align="center"> <h5><a href="https://www.dfki.de/web">
 Deutsches Forschungszentrum für Künstliche Intelligenz
 </a><br>German Research Center for Artificial Intelligence<br><a href="https://www.qu.tu-berlin.de/menue/qu/">Institut für Softwaretechnik und Theoretische Informatik<br>
