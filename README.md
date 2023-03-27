@@ -26,7 +26,7 @@ Quality and Usability Lab</a></h5> </td>
 </table>
 
 # MasterThesis: Accented Speech Recognition
-## In progress 09.08.2022 - 05.05.2023
+## In progress - 05.05.2023
 ## Abstract
 ......
 
