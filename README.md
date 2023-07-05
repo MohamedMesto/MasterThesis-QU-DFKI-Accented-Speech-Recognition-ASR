@@ -28,7 +28,16 @@ Quality and Usability Lab</a></h5> </td>
 # MasterThesis: Accented Speech Recognition
  
 ## Abstract
-......
+
+In this study, we conduct a comprehensive analysis of how accent information influences the internal representation of speech in an end-to-end automatic speech recognition (ASR) system. Our approach involves utilizing the state-of-the-art Conformer-Transducer-Large model as the basis for our ASR system. This model architecture combines convolutional neural networks (CNNs) with transformers, enabling effective capturing of both local and global dependencies within the input audio data.
+
+To train the model, we initialize it with a large amount of US-accented English speech data and subsequently fine-tune it on a vast quantity of DE-accented German speech data. We evaluate the performance of the model on speech samples representing eleven distinct German accents. To investigate the impact of accents on the internal representation, we employ two primary probing techniques: a) Gradient-based explanation methods and b) Analysis of the outputs from accent and phone classifiers.
+
+Our findings reveal consistent trends across different accents, irrespective of the probing technique employed. Moreover, we observe that the initial convolutional layer encodes the majority of accent-related information. This observation suggests possibilities for adapting the end-to-end model to learn representations that are invariant to accents.
+
+Overall, our study offers a detailed examination of how accents are manifested in the internal representation of speech within an end-to-end ASR system.
+
+
 
 ## Contributors
 - Mohamed Mesto m.mesto@campus.tu-berlin.de  , Mohamedmesto111@gmail.com
