@@ -37,7 +37,8 @@ Our findings reveal consistent trends across different accents, irrespective of 
 
 Overall, our study offers a detailed examination of how accents are manifested in the internal representation of speech within an end-to-end ASR system.
 
-
+## keywords
+Accented speech recognition, accent recognition, acoustic modeling, end-to-end ASR
 
 ## Contributors
 - Mohamed Mesto m.mesto@campus.tu-berlin.de  , Mohamedmesto111@gmail.com
