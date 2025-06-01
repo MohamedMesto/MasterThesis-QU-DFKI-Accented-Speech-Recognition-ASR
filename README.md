@@ -1,6 +1,6 @@
 <table border=0>
 <tr border=0>
-<td> <img align="left"  alt="Mohamed Mesto" width="100px" height='60px' src="https://github.com/MohamedMesto/MohamedMesto/blob/main/Images/QU-Lab.png"/> </td>
+<td> <img align="left"  alt="Mohamed Mesto" width="100px" height='60px' src="https://github.com/MohamedMesto/MohamedMesto/blob/main/Images/QU-Lab.png"/>QU-Lab </td>
   <td align="center"> <h5><a href="https://www.dfki.de/web">
 Deutsches Forschungszentrum für Künstliche Intelligenz
 </a><br>German Research Center for Artificial Intelligence<br><a href="https://www.qu.tu-berlin.de/menue/qu/">Institut für Softwaretechnik und Theoretische Informatik<br>https://github.com/MohamedMesto/MohamedMesto/blob/main/Images/QU-Lab.png
